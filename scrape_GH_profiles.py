@@ -1,7 +1,7 @@
 # Scrape Github profile data
 ### Creates CSV file with commit data from profile data visualization
 ### Creates JSON file with basic profile information and highlights
-### Downloads avatar photo
+### Running: python profileScrape.py githubUsername
 
 import urllib
 from bs4 import BeautifulSoup
@@ -23,7 +23,6 @@ os.mkdir(gitUser)
 os.chdir(gitUser)
 
 
-
 ### get commit history data, write to CSV
 f = open(gitUser + '.csv', 'wt')
 
@@ -36,20 +35,8 @@ for day in days:
 	count = day['data-count']
 	date = day['data-date']
 	writer.writerow((count,date))
-
-
 f.close()
 
-
-
-
-### get avatar
-def download_image(imageurl):
-	print 'downloading ', imageurl
-	#formatting the url to get full-sized images
-	DLurl = imageurl.replace("?v=3&s=460", "")
-	filename = gitUser + ".jpeg"
-	urllib.urlretrieve(DLurl,filename)
 
 
 ### get profile info
@@ -81,6 +68,4 @@ with open(gitUser + ".json", "w") as outputfile:
 	json.dump(output, outputfile, indent=2)
 	print 'dumping ', outputfile
 
-### 
-imgLoc = soup.find("img")['src']
-download_image(imgLoc)
+
