@@ -1,5 +1,15 @@
-# This file will write a shell script to fill your github history.
+'''
+Fake your github contributions. Randomization makes it look convincing.
 
+###Usage:
+    (Optional) Make a dummy repository for your automated contributions (must be empty)
+    Run Contribs.py, enter inputs as prompted
+    Run fillit.sh (takes a few seconds)
+
+###Notes:
+    Does not take into account previous commits on each day
+'''
+# This file will write a shell script to fill your github history.
 # imports
 from random import randint
 from datetime import datetime, timedelta
